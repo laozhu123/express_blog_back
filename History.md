@@ -24,3 +24,8 @@
 ==================
 
 * 增加travis集成测试
+
+1.2.2 / 2018-11-25
+==================
+
+* it's hard to say if i can do this job, but i will do my best.
