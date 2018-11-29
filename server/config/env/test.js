@@ -9,6 +9,6 @@ module.exports = {
   redis: {
     db: 2
   },
-  port:    process.env.PORT || 8080,
+  port:   process.env.PORT || 8080,
   seedDB: true
 };
