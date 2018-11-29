@@ -56,7 +56,7 @@
     "gulp-env": "^0.4.0",
     "gulp-istanbul": "^1.1.1",
     "gulp-mocha": "^3.0.1",
-    "gulp-nodemon": "^2.2.1",
+    "gulp-nodemon": "2.2.1",
     "gulp-sequence": "^0.4.6",
     "gulp-util": "^3.0.7",
     "should": "^11.1.0",

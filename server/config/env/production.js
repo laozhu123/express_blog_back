@@ -15,6 +15,7 @@ module.exports = {
     db: 1,
     dropBufferSupport: true
   },
+  seedDB: true,
   //生产环境cookie是否需要domain视具体情况而定.
   session:{
     cookie:  {domain:'.jackhu.top',maxAge: 60000*5}
