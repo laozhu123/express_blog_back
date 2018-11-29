@@ -258,28 +258,29 @@ exports.getPrenext = function (req,res,next) {
 
 //获取首页图片
 exports.getIndexImage = function (req,res,next) {
+	return res.status(200).json({success:true,img:"http://es6.ruanyifeng.com/images/cover-3rd.jpg"});
 	//使用redis缓存图片列表.
-	redis.llen('indexImages').then(function (imagesCount) {
-		if(imagesCount < 1){
-			res.status(200).json({success:true,img:config.defaultIndexImage});
-			if(config.qiniu.app_key !== '' && config.qiniu.app_secret !== ''){
-				return qiniuHelper.list('blog/index','',30).then(function(result){
-					return Promise.map(result.items,function (item) {
-						return redis.lpush('indexImages',config.qiniu.domain + item.key + '-600x1500q80');
-					});
-				});
-			}
-			return;
-		}else{
-			return redis.lrange('indexImages', 0, 30).then(function (images) {
-				var index = _.random(images.length - 1);
-				return res.status(200).json({success:true,img:images[index]});
-			});
-		}
-	}).catch(function (err) {
-		redis.del('indexImages');
-		return next(err);
-	});
+	// redis.llen('indexImages').then(function (imagesCount) {
+	// 	if(imagesCount < 1){
+	// 		res.status(200).json({success:true,img:config.defaultIndexImage});
+	// 		if(config.qiniu.app_key !== '' && config.qiniu.app_secret !== ''){
+	// 			return qiniuHelper.list('blog/index','',30).then(function(result){
+	// 				return Promise.map(result.items,function (item) {
+	// 					return redis.lpush('indexImages',config.qiniu.domain + item.key + '-600x1500q80');
+	// 				});
+	// 			});
+	// 		}
+	// 		return;
+	// 	}else{
+	// 		return redis.lrange('indexImages', 0, 30).then(function (images) {
+	// 			var index = _.random(images.length - 1);
+	// 			return res.status(200).json({success:true,img:images[index]});
+	// 		});
+	// 	}
+	// }).catch(function (err) {
+	// 	redis.del('indexImages');
+	// 	return next(err);
+	// });
 }
 
 //用户喜欢
